@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/24v.iml" filepath="$PROJECT_DIR$/24v.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L11 L12 DiceGames/DiceGames.iml" filepath="$PROJECT_DIR$/L11 L12 DiceGames/DiceGames.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L03 Variable og if-else/Elementary PRO opg/Elementary PRO opg.iml" filepath="$PROJECT_DIR$/L03 Variable og if-else/Elementary PRO opg/Elementary PRO opg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Fritid/Fritid.iml" filepath="$PROJECT_DIR$/Fritid/Fritid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProjektKlasseMetoder/KlasseMetoder.iml" filepath="$PROJECT_DIR$/ProjektKlasseMetoder/KlasseMetoder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L01 IntelliJ/L01 IntelliJ.iml" filepath="$PROJECT_DIR$/L01 IntelliJ/L01 IntelliJ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L02 24v/L02 24v.iml" filepath="$PROJECT_DIR$/L02 24v/L02 24v.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L03 Variable og if-else/L03 Variable og if-else.iml" filepath="$PROJECT_DIR$/L03 Variable og if-else/L03 Variable og if-else.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L04 Iteration While/L04 Iteration While.iml" filepath="$PROJECT_DIR$/L04 Iteration While/L04 Iteration While.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L05 Iteration for/L05 Iteration for.iml" filepath="$PROJECT_DIR$/L05 Iteration for/L05 Iteration for.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L06 Array og foreach/L06 Array og foreach.iml" filepath="$PROJECT_DIR$/L06 Array og foreach/L06 Array og foreach.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L07 Opsamling/L07 Opsamling.iml" filepath="$PROJECT_DIR$/L07 Opsamling/L07 Opsamling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L08/L08.iml" filepath="$PROJECT_DIR$/L08/L08.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L08 for med grafik/L08 for med grafik.iml" filepath="$PROJECT_DIR$/L08 for med grafik/L08 for med grafik.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L09 Klasser objekter/L09 Klasser objekter.iml" filepath="$PROJECT_DIR$/L09 Klasser objekter/L09 Klasser objekter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L13 Klasser og objekter/L13 Klasser og objekter.iml" filepath="$PROJECT_DIR$/L13 Klasser og objekter/L13 Klasser og objekter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L14 ArrayList/L14 ArrayList.iml" filepath="$PROJECT_DIR$/L14 ArrayList/L14 ArrayList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L15 Opsamling/L15 Opsamling.iml" filepath="$PROJECT_DIR$/L15 Opsamling/L15 Opsamling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L16 GUI/L16 GUI.iml" filepath="$PROJECT_DIR$/L16 GUI/L16 GUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L17 GUI Demo/L17 GUI Demo.iml" filepath="$PROJECT_DIR$/L17 GUI Demo/L17 GUI Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L17 Gui/L17 Gui.iml" filepath="$PROJECT_DIR$/L17 Gui/L17 Gui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L20 Yatzy/L20 Yatzy.iml" filepath="$PROJECT_DIR$/L20 Yatzy/L20 Yatzy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L21 - Forbindelse mellem klasser/L21 - Forbindelse mellem klasser.iml" filepath="$PROJECT_DIR$/L21 - Forbindelse mellem klasser/L21 - Forbindelse mellem klasser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Studiestartproeve/Studiestartproeve.iml" filepath="$PROJECT_DIR$/Studiestartproeve/Studiestartproeve.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L03 Variable og if-else/Elementary PRO opg/mandag6feb/mandag6feb.iml" filepath="$PROJECT_DIR$/L03 Variable og if-else/Elementary PRO opg/mandag6feb/mandag6feb.iml" />
+    </modules>
+  </component>
+</project>
