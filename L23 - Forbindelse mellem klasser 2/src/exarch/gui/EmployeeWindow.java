@@ -11,13 +11,13 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class EmployeeWindow extends Stage {
     private final Employee employee; // nullable
-
 
     /** Note: Nullable param company. */
     public EmployeeWindow(String title, Employee employee) {
@@ -38,6 +38,7 @@ public class EmployeeWindow extends Stage {
     // -------------------------------------------------------------------------
     private final TextField txfName = new TextField();
     private final TextField txfHourlyWage = new TextField();
+    private final TextField txfEmploymentYear = new TextField();
     private final CheckBox cbxCompany = new CheckBox("Company");
     private final ComboBox comBkzCompanies = new ComboBox();
     private final Label lblError = new Label();
@@ -58,18 +59,22 @@ public class EmployeeWindow extends Stage {
         pane.add(lblHourlyWage, 0, 2);
         pane.add(txfHourlyWage, 0, 3);
 
+        Label lblEmploymentYear = new Label("Employment Year: ");
+        pane.add(lblEmploymentYear, 0, 4);
+        pane.add(txfEmploymentYear, 0, 5);
+
         // Company checkbox
-        pane.add(cbxCompany, 0, 4);
+        pane.add(cbxCompany, 0, 6);
         cbxCompany.setOnAction(event -> this.cbxAction());
-        pane.add(comBkzCompanies, 0,5);
+        pane.add(comBkzCompanies, 0,7);
 
         Button btnCancel = new Button("Cancel");
-        pane.add(btnCancel, 0, 6);
+        pane.add(btnCancel, 0, 8);
         GridPane.setHalignment(btnCancel, HPos.LEFT);
         btnCancel.setOnAction(event -> this.cancelAction());
 
         Button btnOK = new Button("OK");
-        pane.add(btnOK, 0, 6);
+        pane.add(btnOK, 0, 8);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
 
@@ -125,8 +130,10 @@ public class EmployeeWindow extends Stage {
             return;
         }
         int wage = -1;
+        int employmentYear = -1;
         try {
             wage = Integer.parseInt(String.valueOf(txfHourlyWage.getText().trim()));
+            employmentYear = Integer.parseInt(String.valueOf(txfEmploymentYear.getText().trim()));
         } catch (NumberFormatException ex) {
             // do nothing
         }
@@ -136,7 +143,7 @@ public class EmployeeWindow extends Stage {
         }
 
         if (employee != null) {
-            Controller.updateEmployee(employee, name, wage);
+            Controller.updateEmployee(employee, name, wage, employmentYear);
             if (selectedCompany != null) {
                 Controller.addEmployeeToCompany(selectedCompany, employee);
             }

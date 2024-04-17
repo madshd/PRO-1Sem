@@ -7,7 +7,6 @@ import exarch.storage.Storage;
 import java.util.ArrayList;
 
 public abstract class Controller {
-
     /**
      * Create a new Company.
      * Pre: name not empty, hours >= 0.
@@ -17,7 +16,6 @@ public abstract class Controller {
         Storage.storeCompany(company);
         return company;
     }
-
     /**
      * Delete the company.
      * Pre: The company has no employees.
@@ -25,7 +23,6 @@ public abstract class Controller {
     public static void deleteCompany(Company company) {
         Storage.deleteCompany(company);
     }
-
     /**
      * Update the company.
      * Pre: name not empty, hours >= 0.
@@ -34,12 +31,9 @@ public abstract class Controller {
         company.setName(name);
         company.setHours(hours);
     }
-
     public static ArrayList<Company> getCompanies() {
         return Storage.getCompanies();
     }
-
-
     /**
      * Create a new Employee.
      * Pre: name not empty, hours >= 0.
@@ -70,15 +64,15 @@ public abstract class Controller {
      * Update the employee.
      * Pre: name not empty, hours >= 0.
      */
-    public static void updateEmployee(Employee employee, String name, int wage) {
+    public static void updateEmployee(Employee employee, String name, int wage, int employmentYear) {
         employee.setName(name);
         employee.setWage(wage);
+        employee.setEmploymentYear(employmentYear);
     }
 
     public static ArrayList<Employee> getEmployees() {
         return Storage.getEmployees();
     }
-
     /**
      * Add the employee to the company.
      * If the employee is connected to a company, this connection is removed first.
@@ -91,7 +85,6 @@ public abstract class Controller {
         company.addEmployee(employee);
         employee.setCompany(company);
     }
-
     public static int getEmployeeCount(Company company) {
        return company.employeesCount();
     }

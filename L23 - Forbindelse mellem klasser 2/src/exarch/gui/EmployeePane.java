@@ -20,6 +20,7 @@ public class EmployeePane extends GridPane {
     private final TextField txfHourlyWage = new TextField();
     private final TextField txfCompany = new TextField();
     private final TextField txfWeeklySalary = new TextField();
+    private final TextField txfEmploymentYear = new TextField();
     private final ListView<Employee> lvwEmployees = new ListView<>();
 
     public EmployeePane() {
@@ -57,6 +58,11 @@ public class EmployeePane extends GridPane {
         this.add(lblWeeklySalary, 1,4);
         this.add(txfWeeklySalary, 2,4);
         txfWeeklySalary.setEditable(false);
+
+        Label lblEmploymentYear = new Label("Employment Year: ");
+        this.add(lblEmploymentYear, 1,5);
+        this.add(txfEmploymentYear, 2, 5);
+        txfEmploymentYear.setEditable(false);
 
         HBox hbxButtons = new HBox(40);
         this.add(hbxButtons, 0, 8, 3, 1);
@@ -130,6 +136,7 @@ public class EmployeePane extends GridPane {
             if (employee.getCompany() != null) {
                 txfCompany.setText(String.valueOf(employee.getCompany()));
                 txfWeeklySalary.setText(String.valueOf(employee.getWage() * employee.getCompany().getHours()));
+                txfEmploymentYear.setText(String.valueOf(employee.getEmploymentYear()));
             } else
                 txfCompany.setText("");
                 txfWeeklySalary.setText(String.valueOf(employee.getWage() * 37));
@@ -138,6 +145,7 @@ public class EmployeePane extends GridPane {
             txfHourlyWage.clear();
             txfCompany.clear();
             txfWeeklySalary.clear();
+            txfEmploymentYear.clear();
         }
     }
 }
