@@ -3,33 +3,40 @@ package gui;
 import controller.Controller;
 import javafx.application.Application;
 import javafx.scene.layout.GridPane;
-import model.Forestilling;
+import model.*;
+import storage.Storage;
 import model.Kunde;
+import model.Bestilling;
+import model.Forestilling;
 import model.Plads;
-import model.PladsType;
 
 import java.time.LocalDate;
 
 public class App {
     public static void main(String[] args) {
-        Application.launch(AppGui.class);
+        initStorage();
+//        Application.launch(AppGui.class);
+        testPrint();
+
+    }
+
+    public static void initStorage() {
         Forestilling f1 = Controller.opretForestilling("Evita", LocalDate.parse("2023-08-10"), LocalDate.parse("2023-08-20"));
         Forestilling f2 = Controller.opretForestilling("Lykke Per", LocalDate.parse("2023-09-01"), LocalDate.parse("2023-09-10"));
         Forestilling f3 = Controller.opretForestilling("Chess", LocalDate.parse("2023-08-21"), LocalDate.parse("2023-08-30"));
 
-        Kunde k3 = Controller.opretKunde("Niels Madsen", "11223344");
-        Kunde k1 = Controller.opretKunde("Anders Hansen", "11223344");
-        Kunde k2 = Controller.opretKunde("Peter Jensen", "11223344");
+        Kunde k1 = Controller.opretKunde("Niels Madsen", "11223344");
+        Kunde k2 = Controller.opretKunde("Anders Hansen", "11223344");
+        Kunde k3 = Controller.opretKunde("Peter Jensen", "11223344");
 
-        System.out.println(k1);
+        Bestilling b1 = Controller.opretBestilling(LocalDate.now(), f2, k1);
+        Bestilling b2 = Controller.opretBestilling(LocalDate.now(), f2, k2);
+        Bestilling b3 = Controller.opretBestilling(LocalDate.now(), f2, k3);
+
+        Plads p1 = Controller.opretPlads(1,1,beregnPris(1,1), bestemPladsType(1,1));
     }
 
-    public void initStorage() {
-
-    }
-
-
-    public void opretPladser() {
+    public static void opretPladser() {
         int antalRaekker = 15;
         int antalSaeder = 20;
         for (int raekkeNr = 1; raekkeNr <= antalRaekker; raekkeNr++){
@@ -39,7 +46,7 @@ public class App {
         }
     }
 
-    public int beregnPris(int raekkeNr, int saedeNr) {
+    public static int beregnPris(int raekkeNr, int saedeNr) {
         int pris = 0;
         switch (raekkeNr) {
             // GULE PLADSER
@@ -63,8 +70,7 @@ public class App {
         }
         return pris;
     }
-
-    public PladsType bestemPladsType(int raekkeNr, int saedeNr) {
+    public static PladsType bestemPladsType(int raekkeNr, int saedeNr) {
         return switch (raekkeNr) {
             case 10 -> switch (saedeNr) {
                 case 8, 9, 10, 11, 12 -> PladsType.KØRESTOL;
@@ -78,4 +84,9 @@ public class App {
         };
     }
 
+    public static void testPrint() {
+        System.out.println(Controller.hentForestillinger());
+        System.out.println(Controller.hentKunder());
+        System.out.println(Controller.hentPladser());
+    }
 }

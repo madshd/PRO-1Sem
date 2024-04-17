@@ -28,7 +28,7 @@ public class Kunde {
     public String toString() {
         return "Kunde{" +
                 "navn='" + navn + '\'' +
-                ", mobil='" + mobil + '\'' +
-                ", bestillinger=" + bestillinger + "\n";
+                " mobil='" + mobil + '\'' +
+                " bestillinger=" + bestillinger + "\n";
     }
 }

@@ -29,8 +29,9 @@ public class Forestilling {
     public String toString() {
         return "Forestilling{" +
                 "navn='" + navn + '\'' +
-                ", startDato=" + startDato +
-                ", slutDato=" + slutDato +
-                ", bestillinger=" + bestillinger + "\n";
+                "startDato=" + startDato +
+                "slutDato=" + slutDato +
+                "} \n";
     }
+
 }

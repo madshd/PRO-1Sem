@@ -4,10 +4,11 @@ import model.*;
 import storage.Storage;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public abstract class Controller {
-    public static Bestilling opretBestilling(LocalDate dato, Forestilling forestilling) {
-        Bestilling bestilling = new Bestilling(dato, forestilling);
+    public static Bestilling opretBestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
+        Bestilling bestilling = new Bestilling(dato, forestilling, kunde);
         forestilling.tilføjBestilling(bestilling);
         return bestilling;
     }
@@ -19,16 +20,28 @@ public abstract class Controller {
         return kunde;
     }
 
+    public static ArrayList<Kunde> hentKunder() {
+        return Storage.hentKunder();
+    }
+
     public static Forestilling opretForestilling(String navn, LocalDate startDato, LocalDate slutDato) {
         Forestilling forestilling = new Forestilling(navn, startDato, slutDato);
         Storage.gemForestilling(forestilling);
         return forestilling;
     }
 
+    public static ArrayList<Forestilling> hentForestillinger() {
+        return Storage.hentForestillinger();
+    }
+
     public static Plads opretPlads(int række, int nr, int pris, PladsType pladsType) {
         Plads plads = new Plads(række, nr, pris, pladsType);
         Storage.gemPlads(plads);
         return plads;
+    }
+
+    public static ArrayList<Plads> hentPladser() {
+        return Storage.hentPladser();
     }
 
     public static void tilføjKundeTilBestilling(Bestilling bestilling, Kunde kunde) {

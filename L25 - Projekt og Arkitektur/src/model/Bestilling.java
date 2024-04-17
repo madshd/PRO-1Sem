@@ -10,7 +10,7 @@ public class Bestilling {
     private Forestilling forestilling;
     private Kunde kunde;
     private ArrayList<Plads> pladser = new ArrayList<>();
-    public Bestilling(LocalDate dato, Forestilling forestilling) {
+    public Bestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
         this.dato = dato;
         this.forestilling = forestilling;
         this.kunde = kunde;
@@ -48,4 +48,12 @@ public class Bestilling {
         this.forestilling = forestilling;
     }
 
+    @Override
+    public String toString() {
+        return "Bestilling{" +
+                "dato=" + dato +
+                "pladser=" + pladser +
+                forestilling +
+                "} \n";
+    }
 }
