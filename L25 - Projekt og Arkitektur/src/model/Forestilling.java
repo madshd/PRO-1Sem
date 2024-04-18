@@ -25,13 +25,19 @@ public class Forestilling {
         bestillinger.remove(bestilling);
     }
 
+    public LocalDate getStartDato() {
+        return startDato;
+    }
+
+    public LocalDate getSlutDato() {
+        return slutDato;
+    }
+
     @Override
     public String toString() {
-        return "Forestilling{" +
-                "navn='" + navn + '\'' +
-                "startDato=" + startDato +
-                "slutDato=" + slutDato +
-                "} \n";
+        return navn + "(fra " +
+                startDato + " til " +
+                slutDato + ")";
     }
 
 }
