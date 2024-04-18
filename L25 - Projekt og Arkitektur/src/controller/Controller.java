@@ -9,6 +9,7 @@ public abstract class Controller {
     public static Bestilling opretBestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
         Bestilling bestilling = new Bestilling(dato, forestilling, kunde);
         forestilling.tilføjBestilling(bestilling);
+        bestilling.setKunde(kunde);
         return bestilling;
     }
 
@@ -44,8 +45,10 @@ public abstract class Controller {
     }
 
     public static void tilføjKundeTilBestilling(Bestilling bestilling, Kunde kunde) {
-        var gammelKunde = bestilling.getKunde();
-        gammelKunde.fjernBestilling(bestilling);
+        if (bestilling.getKunde() != null) {
+            var gammelKunde = bestilling.getKunde();
+            gammelKunde.fjernBestilling(bestilling);
+        }
         kunde.tilføjBestilling(bestilling);
         bestilling.setKunde(kunde);
         kunde.tilføjBestilling(bestilling);

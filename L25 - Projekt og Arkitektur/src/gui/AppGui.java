@@ -103,13 +103,14 @@ public class AppGui extends Application {
     public void opretKundeAction() {
         String navn = txfKundeNavn.getText();
         String mobil = txfKundeMobil.getText();
-        // TODO der mangler if og else sætninger
-        if (!mobil.matches("\\d{8}") || navn.isEmpty()) {
+        if (!mobil.matches("\\d{8}") || navn.isEmpty() || !navn.matches("[a-zA-Z]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Fejl");
             alert.setHeaderText(null);
             if (navn.isEmpty()) {
                 alert.setContentText("Navn må ikke være tomt.");
+            } if (!navn.matches("[a-zA-Z]+")) {
+                alert.setContentText("Navn må ikke indholde tal.");
             } else {
                 alert.setContentText("Telefonnummeret skal være 8 cifre.");
             }
@@ -126,21 +127,58 @@ public class AppGui extends Application {
         String navn = txfForstilling.getText();
         LocalDate startDato = dpStart.getValue();
         LocalDate slutDato = dpSlut.getValue();
-        Controller.opretForestilling(navn, startDato, slutDato);
-        opdaterForstillinger();
-        txfForstilling.clear();
-        dpStart.getEditor().clear();
-        dpStart.setValue(null);
-        dpSlut.getEditor().clear();
-        dpSlut.setValue(null);
+
+        if (navn.isEmpty() || startDato == null || slutDato == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fejl");
+            alert.setHeaderText(null);
+            if (navn.isEmpty()) {
+                alert.setContentText("Forstillingen skal have et navn.");
+            } else {
+                alert.setContentText("Du skal taste start og slut dato.");
+            }
+            alert.showAndWait();
+        } else if (startDato.isBefore(slutDato)) {
+            Controller.opretForestilling(navn, startDato, slutDato);
+            opdaterForstillinger();
+            txfForstilling.clear();
+            dpStart.getEditor().clear();
+            dpStart.setValue(null);
+            dpSlut.getEditor().clear();
+            dpSlut.setValue(null);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fejl");
+            alert.setHeaderText(null);
+            alert.setContentText("Din start dato skal være før slut datoen.");
+            alert.showAndWait();
+        }
     }
 
     public void opretBestillingAction() {
         Forestilling forestilling = lvwForstilling.getSelectionModel().getSelectedItem();
         Kunde kunde = lvwKunde.getSelectionModel().getSelectedItem();
         LocalDate valgteDato = LocalDate.parse(txfDato.getText());
-        if (valgteDato.isAfter(forestilling.getStartDato()) && valgteDato.isBefore(forestilling.getSlutDato())) {
-            Controller.opretBestilling(valgteDato, forestilling, kunde);
+
+        if (forestilling == null || kunde == null || valgteDato == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fejl");
+            alert.setHeaderText(null);
+            alert.setContentText("Vælg en forestilling, en kunde og indtast en dato.");
+            alert.showAndWait();
+        } else {
+            if (valgteDato.isAfter(forestilling.getStartDato()) && valgteDato.isBefore(forestilling.getSlutDato())) {
+                Bestilling bestilling = Controller.opretBestilling(valgteDato, forestilling, kunde);
+                Controller.tilføjBestillingTilForestilling(forestilling, bestilling);
+                Controller.tilføjKundeTilBestilling(bestilling, kunde);
+                System.out.println(kunde.hentBestillinger());
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Fejl");
+                alert.setHeaderText(null);
+                alert.setContentText("Valgt dato skal være inden for forestillingens periode.");
+                alert.showAndWait();
+            }
         }
     }
 
