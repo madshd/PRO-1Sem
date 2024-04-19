@@ -39,27 +39,19 @@ public class Forestilling {
 
     // TODO
 
-//    public boolean erPladsLedig(int række,int nr, LocalDate dato) {
-//        for (Bestilling bestilling : bestillinger) {
-//            if (dato == bestilling.getDato()) {
-//                for (Plads plads : bestilling.hentPladser()) {
-//                    if (række == bestilling.get)
-//                }
-//            }
-//        }
-//    }
-
     public boolean erPladsLedig(int række, int nr, LocalDate dato) {
-        boolean pladsLedig = false; //Antager at sædet ikke er optaget som standard
         for (Bestilling bestilling : bestillinger) {
-            for (Plads plads : bestilling.hentPladser()) {
-                if (bestilling.getDato().equals(dato) && plads.getRække() == række && plads.getNr() == nr) {
-                    pladsLedig = true;
+            if (bestilling.getDato().equals(dato)) {
+                for (Plads plads : bestilling.getPladser()) {
+                    if (plads.getRække() == række && plads.getNr() == nr) {
+                        return false;
+                    }
                 }
             }
         }
-        return pladsLedig;
+        return true;
     }
+
 
     @Override
     public String toString() {

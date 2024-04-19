@@ -46,29 +46,31 @@ public class App {
     }
 
     public static int beregnPris(int raekkeNr, int saedeNr) {
-        int pris = 400;
+        int pris = 0;
         switch (raekkeNr) {
-            // GULE PLADSER
             case 1, 2, 3, 4, 5 -> {
-                if (saedeNr >= 3 && saedeNr <= 18 || saedeNr <= 1 && saedeNr >= 2 || saedeNr <= 19 && saedeNr >= 20) {
-                    pris = 500;
-                }
-            }
-            // GRØNNE PLADSER
-            case 6, 7, 8, 9, 10 -> {
-                if (saedeNr >= 3 && saedeNr <= 18 || saedeNr <= 1 && saedeNr >= 2 || saedeNr <= 19 && saedeNr >= 20) {
+                if (saedeNr == 1 || saedeNr == 2 || saedeNr == 19 || saedeNr == 20) {
                     pris = 450;
+                } else if (saedeNr >= 3 && saedeNr <= 18) {
+                    pris = 500;
                 }
             }
-            // BLÅ PLADSER
+            case 6, 7, 8, 9, 10 -> {
+                if (saedeNr == 1 || saedeNr == 2 || saedeNr == 19 || saedeNr >= 20) {
+                    pris = 400;
+                } else if (saedeNr >= 3 && saedeNr <= 18) {
+                    pris  = 450;
+                }
+            }
             case 11, 12, 13, 14, 15 -> {
-                if (saedeNr >= 3 && saedeNr <= 18) {
-                    pris = 500;
+                if (saedeNr >= 1 && saedeNr <= 20) {
+                    pris = 400;
                 }
             }
         }
         return pris;
     }
+
     public static PladsType bestemPladsType(int raekkeNr, int saedeNr) {
         return switch (raekkeNr) {
             case 10 -> switch (saedeNr) {

@@ -7,7 +7,7 @@ import model.Kunde;
 
 public class Bestilling {
     private LocalDate dato;
-    private Forestilling forestilling;
+    private final Forestilling forestilling;
     private Kunde kunde;
     private ArrayList<Plads> pladser = new ArrayList<>();
     public Bestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
@@ -20,8 +20,12 @@ public class Bestilling {
         return new ArrayList<>(pladser);
     }
 
-    public void tilføjPlads(Plads plads) {
-        pladser.add(plads);
+//    public void tilføjPlads(Plads plads) {
+//        pladser.add(plads);
+//    }
+
+    public void tilføjPladser(ArrayList<Plads> nyePladser) {
+        pladser.addAll(nyePladser);
     }
 
     public void fjernPlads(Plads plads) {
@@ -32,10 +36,6 @@ public class Bestilling {
         this.kunde = kunde;
     }
 
-    public void setForestilling(Forestilling forestilling) {
-        this.forestilling = forestilling;
-    }
-
     public Forestilling getForestilling() {
         return forestilling;
     }
@@ -44,9 +44,12 @@ public class Bestilling {
         return kunde;
     }
 
-
     public LocalDate getDato() {
         return dato;
+    }
+
+    public ArrayList<Plads> getPladser() {
+        return pladser;
     }
 
     @Override

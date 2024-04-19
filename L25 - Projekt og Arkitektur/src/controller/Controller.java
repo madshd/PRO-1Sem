@@ -6,18 +6,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public abstract class Controller {
-//    public static Bestilling opretBestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
-//        Bestilling bestilling = new Bestilling(dato, forestilling, kunde);
-//        forestilling.tilføjBestilling(bestilling);
-//        bestilling.setKunde(kunde);
-//        return bestilling;
-//    }
+    public static Bestilling opretBestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
+        Bestilling bestilling = new Bestilling(dato, forestilling, kunde);
+        forestilling.tilføjBestilling(bestilling);
+        kunde.tilføjBestilling(bestilling);
+
+        return bestilling;
+    }
 
     public static Bestilling opretBestillingMedPladser(Forestilling forestilling, Kunde kunde, LocalDate dato, ArrayList<Plads> pladser) {
         Bestilling bestilling = new Bestilling(dato, forestilling, kunde);
         forestilling.tilføjBestilling(bestilling);
-//        bestilling.tilføjPlads(pladser);
-        bestilling.setKunde(kunde);
+        bestilling.tilføjPladser(pladser);
+
         return bestilling;
     }
 
@@ -51,23 +52,21 @@ public abstract class Controller {
     }
 
     public static void tilføjKundeTilBestilling(Bestilling bestilling, Kunde kunde) {
-//        if (bestilling.getKunde() != null) {
-//            var gammelKunde = bestilling.getKunde();
-//            gammelKunde.fjernBestilling(bestilling);
-//        }
         kunde.tilføjBestilling(bestilling);
         bestilling.setKunde(kunde);
     }
 
     public static void tilføjBestillingTilForestilling(Forestilling forestilling, Bestilling bestilling) {
-//        var oldForestilling = bestilling.getForestilling();
-////        oldForestilling.fjernBestilling(bestilling);
-        bestilling.setForestilling(forestilling);
         forestilling.tilføjBestilling(bestilling);
     }
 
-    public static void tilføjPladsTilBestilling(Bestilling bestilling, Plads plads) {
-        bestilling.tilføjPlads(plads);
+//    public static void tilføjPladsTilBestilling(Bestilling bestilling, Plads plads) {
+//        bestilling.tilføjPlads(plads);
+//    }
+
+    public static boolean erPladsLedig(Forestilling forestilling, int række, int nr, LocalDate dato) {
+        return forestilling.erPladsLedig(række, nr, dato);
     }
 
 }
+
