@@ -11,6 +11,7 @@ import model.Forestilling;
 import model.Plads;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) {
@@ -18,7 +19,6 @@ public class App {
         opretPladser();
         Application.launch(AppGui.class);
         testPrint();
-
     }
 
     public static void initStorage() {
@@ -33,8 +33,6 @@ public class App {
         Bestilling b1 = Controller.opretBestilling(LocalDate.now(), f2, k1);
         Bestilling b2 = Controller.opretBestilling(LocalDate.now(), f2, k2);
         Bestilling b3 = Controller.opretBestilling(LocalDate.now(), f2, k3);
-
-        Plads p1 = Controller.opretPlads(1,1,beregnPris(1,1), bestemPladsType(1,1));
     }
 
     public static void opretPladser() {
@@ -48,7 +46,7 @@ public class App {
     }
 
     public static int beregnPris(int raekkeNr, int saedeNr) {
-        int pris = 0;
+        int pris = 400;
         switch (raekkeNr) {
             // GULE PLADSER
             case 1, 2, 3, 4, 5 -> {
@@ -86,8 +84,28 @@ public class App {
     }
 
     public static void testPrint() {
-        System.out.println(Controller.hentForestillinger());
-        System.out.println(Controller.hentKunder());
-        System.out.println(Controller.hentPladser());
+        ArrayList<Plads> pladser = Controller.getPladser();
+        ArrayList<Kunde> kunder = Controller.getKunder();
+        ArrayList<Forestilling> forestillinger = Controller.getForestillinger();
+
+        int i = 0;
+
+        for (Object Plads : pladser) {
+            System.out.print(Plads.toString());
+            i++;
+            if(i == 20) {
+                System.out.println("\n");
+                i = 0;
+            }
+        }
+        for (Object Kunde : kunder) {
+            System.out.println(Kunde.toString());
+        }
+
+        System.out.println();
+
+        for (Object Forestilling : forestillinger) {
+            System.out.println(Forestilling.toString());
+        }
     }
 }

@@ -16,6 +16,14 @@ public class Plads {
         this.pladsType = pladsType;
     }
 
+    public int getRække() {
+        return række;
+    }
+
+    public int getNr() {
+        return nr;
+    }
+
     @Override
     public String toString() {
         return "Rk " + række +

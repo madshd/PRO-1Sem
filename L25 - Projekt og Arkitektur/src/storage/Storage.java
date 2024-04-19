@@ -19,7 +19,7 @@ public abstract class Storage {
         forestillinger.add(forestilling);
     }
 
-    public static ArrayList<Forestilling> hentForestillinger() {
+    public static ArrayList<Forestilling> getForestillinger() {
         return new ArrayList<>(forestillinger);
     }
 
@@ -27,7 +27,7 @@ public abstract class Storage {
         kunder.add(kunde);
     }
 
-    public static ArrayList<Kunde> hentKunder() {
+    public static ArrayList<Kunde> getKunder() {
         return new ArrayList<>(kunder);
     }
 
@@ -35,11 +35,11 @@ public abstract class Storage {
         pladser.add(plads);
     }
 
-    public static ArrayList<Plads> hentPladser() {
+    public static ArrayList<Plads> getPladser() {
         return new ArrayList<>(pladser);
     }
 
-    public static ArrayList<Kunde> hentBestillinger() {
+    public static ArrayList<Kunde> getBestillinger() {
         return new ArrayList<>(bestillinger);
     }
 }

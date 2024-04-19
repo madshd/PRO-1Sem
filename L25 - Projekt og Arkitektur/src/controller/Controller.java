@@ -6,22 +6,29 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public abstract class Controller {
-    public static Bestilling opretBestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
+//    public static Bestilling opretBestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
+//        Bestilling bestilling = new Bestilling(dato, forestilling, kunde);
+//        forestilling.tilføjBestilling(bestilling);
+//        bestilling.setKunde(kunde);
+//        return bestilling;
+//    }
+
+    public static Bestilling opretBestillingMedPladser(Forestilling forestilling, Kunde kunde, LocalDate dato, ArrayList<Plads> pladser) {
         Bestilling bestilling = new Bestilling(dato, forestilling, kunde);
         forestilling.tilføjBestilling(bestilling);
+//        bestilling.tilføjPlads(pladser);
         bestilling.setKunde(kunde);
         return bestilling;
     }
 
     public static Kunde opretKunde(String navn, String mobil) {
         Kunde kunde = new Kunde(navn, mobil);
-//        bestilling.tilføjKunde(kunde);
         Storage.gemKunde(kunde);
         return kunde;
     }
 
-    public static ArrayList<Kunde> hentKunder() {
-        return Storage.hentKunder();
+    public static ArrayList<Kunde> getKunder() {
+        return Storage.getKunder();
     }
 
     public static Forestilling opretForestilling(String navn, LocalDate startDato, LocalDate slutDato) {
@@ -30,8 +37,11 @@ public abstract class Controller {
         return forestilling;
     }
 
-    public static ArrayList<Forestilling> hentForestillinger() {
-        return Storage.hentForestillinger();
+    public static ArrayList<Forestilling> getForestillinger() {
+        return Storage.getForestillinger();
+    }
+    public static ArrayList<Plads> getPladser() {
+        return Storage.getPladser();
     }
 
     public static Plads opretPlads(int række, int nr, int pris, PladsType pladsType) {
@@ -40,24 +50,24 @@ public abstract class Controller {
         return plads;
     }
 
-    public static ArrayList<Plads> hentPladser() {
-        return Storage.hentPladser();
-    }
-
     public static void tilføjKundeTilBestilling(Bestilling bestilling, Kunde kunde) {
-        if (bestilling.getKunde() != null) {
-            var gammelKunde = bestilling.getKunde();
-            gammelKunde.fjernBestilling(bestilling);
-        }
+//        if (bestilling.getKunde() != null) {
+//            var gammelKunde = bestilling.getKunde();
+//            gammelKunde.fjernBestilling(bestilling);
+//        }
         kunde.tilføjBestilling(bestilling);
         bestilling.setKunde(kunde);
-        kunde.tilføjBestilling(bestilling);
     }
 
     public static void tilføjBestillingTilForestilling(Forestilling forestilling, Bestilling bestilling) {
-        var oldForestilling = bestilling.getForestilling();
-        oldForestilling.fjernBestilling(bestilling);
+//        var oldForestilling = bestilling.getForestilling();
+////        oldForestilling.fjernBestilling(bestilling);
         bestilling.setForestilling(forestilling);
         forestilling.tilføjBestilling(bestilling);
     }
+
+    public static void tilføjPladsTilBestilling(Bestilling bestilling, Plads plads) {
+        bestilling.tilføjPlads(plads);
+    }
+
 }

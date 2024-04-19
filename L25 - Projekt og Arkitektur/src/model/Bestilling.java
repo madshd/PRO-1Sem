@@ -28,12 +28,12 @@ public class Bestilling {
         pladser.remove(plads);
     }
 
-    public Forestilling hentForestilling() {
-        return forestilling;
-    }
-
     public void setKunde(Kunde kunde) {
         this.kunde = kunde;
+    }
+
+    public void setForestilling(Forestilling forestilling) {
+        this.forestilling = forestilling;
     }
 
     public Forestilling getForestilling() {
@@ -44,8 +44,9 @@ public class Bestilling {
         return kunde;
     }
 
-    public void setForestilling(Forestilling forestilling) {
-        this.forestilling = forestilling;
+
+    public LocalDate getDato() {
+        return dato;
     }
 
     @Override

@@ -154,7 +154,6 @@ public class AppGui extends Application {
             alert.showAndWait();
         }
     }
-
     public void opretBestillingAction() {
         Forestilling forestilling = lvwForstilling.getSelectionModel().getSelectedItem();
         Kunde kunde = lvwKunde.getSelectionModel().getSelectedItem();
@@ -171,7 +170,8 @@ public class AppGui extends Application {
                 Bestilling bestilling = Controller.opretBestilling(valgteDato, forestilling, kunde);
                 Controller.tilføjBestillingTilForestilling(forestilling, bestilling);
                 Controller.tilføjKundeTilBestilling(bestilling, kunde);
-                System.out.println(kunde.hentBestillinger());
+                Controller.tilføjPladsTilBestilling(bestilling, lvwPlads.getSelectionModel().getSelectedItem());
+                System.out.println(kunde);
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Fejl");
@@ -183,14 +183,14 @@ public class AppGui extends Application {
     }
 
     private void opdaterForstillinger() {
-        lvwForstilling.getItems().setAll(Controller.hentForestillinger());
+        lvwForstilling.getItems().setAll(Controller.getForestillinger());
     }
 
     private void opdaterKunder() {
-        lvwKunde.getItems().setAll(Controller.hentKunder());
+        lvwKunde.getItems().setAll(Controller.getKunder());
     }
 
     private void opdaterPladser() {
-        lvwPlads.getItems().setAll(Controller.hentPladser());
+        lvwPlads.getItems().setAll(Controller.getPladser());
     }
 }

@@ -1,5 +1,7 @@
 package model;
 
+import controller.Controller;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -14,9 +16,11 @@ public class Forestilling {
         this.startDato = startDato;
         this.slutDato = slutDato;
     }
+
     public ArrayList<Bestilling> hentBestillinger() {
         return new ArrayList<>(bestillinger);
     }
+
     public void tilføjBestilling(Bestilling bestilling) {
         bestillinger.add(bestilling);
     }
@@ -31,6 +35,30 @@ public class Forestilling {
 
     public LocalDate getSlutDato() {
         return slutDato;
+    }
+
+    // TODO
+
+//    public boolean erPladsLedig(int række,int nr, LocalDate dato) {
+//        for (Bestilling bestilling : bestillinger) {
+//            if (dato == bestilling.getDato()) {
+//                for (Plads plads : bestilling.hentPladser()) {
+//                    if (række == bestilling.get)
+//                }
+//            }
+//        }
+//    }
+
+    public boolean erPladsLedig(int række, int nr, LocalDate dato) {
+        boolean pladsLedig = false; //Antager at sædet ikke er optaget som standard
+        for (Bestilling bestilling : bestillinger) {
+            for (Plads plads : bestilling.hentPladser()) {
+                if (bestilling.getDato().equals(dato) && plads.getRække() == række && plads.getNr() == nr) {
+                    pladsLedig = true;
+                }
+            }
+        }
+        return pladsLedig;
     }
 
     @Override
