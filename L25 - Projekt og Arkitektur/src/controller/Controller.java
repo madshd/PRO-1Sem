@@ -60,10 +60,6 @@ public abstract class Controller {
         forestilling.tilføjBestilling(bestilling);
     }
 
-//    public static void tilføjPladsTilBestilling(Bestilling bestilling, Plads plads) {
-//        bestilling.tilføjPlads(plads);
-//    }
-
     public static boolean erPladsLedig(Forestilling forestilling, int række, int nr, LocalDate dato) {
         return forestilling.erPladsLedig(række, nr, dato);
     }

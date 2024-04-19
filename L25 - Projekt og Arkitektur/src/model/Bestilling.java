@@ -9,7 +9,7 @@ public class Bestilling {
     private LocalDate dato;
     private final Forestilling forestilling;
     private Kunde kunde;
-    private ArrayList<Plads> pladser = new ArrayList<>();
+    private final ArrayList<Plads> pladser = new ArrayList<>();
     public Bestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
         this.dato = dato;
         this.forestilling = forestilling;
@@ -19,10 +19,6 @@ public class Bestilling {
     public ArrayList<Plads> hentPladser() {
         return new ArrayList<>(pladser);
     }
-
-//    public void tilføjPlads(Plads plads) {
-//        pladser.add(plads);
-//    }
 
     public void tilføjPladser(ArrayList<Plads> nyePladser) {
         pladser.addAll(nyePladser);

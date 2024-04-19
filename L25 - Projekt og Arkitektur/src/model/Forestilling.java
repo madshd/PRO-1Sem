@@ -10,7 +10,7 @@ public class Forestilling {
     private LocalDate startDato;
     private LocalDate slutDato;
     // association 1 forestilling --> 0..* bestilling
-    private ArrayList<Bestilling> bestillinger = new ArrayList<>();
+    private final ArrayList<Bestilling> bestillinger = new ArrayList<>();
     public Forestilling(String navn, LocalDate startDato, LocalDate slutDato) {
         this.navn = navn;
         this.startDato = startDato;

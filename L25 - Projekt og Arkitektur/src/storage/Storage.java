@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Storage {
-    private static ArrayList<Kunde> bestillinger = new ArrayList<>();
-    private static ArrayList<Forestilling> forestillinger = new ArrayList<>();
-    private static ArrayList<Kunde> kunder = new ArrayList<>();
-    private static ArrayList<Plads> pladser = new ArrayList<>();
+    private static final ArrayList<Kunde> bestillinger = new ArrayList<>();
+    private static final ArrayList<Forestilling> forestillinger = new ArrayList<>();
+    private static final ArrayList<Kunde> kunder = new ArrayList<>();
+    private static final ArrayList<Plads> pladser = new ArrayList<>();
 
     public static void gemForestilling(Forestilling forestilling) {
         forestillinger.add(forestilling);

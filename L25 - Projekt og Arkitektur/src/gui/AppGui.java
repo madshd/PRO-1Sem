@@ -173,7 +173,6 @@ public class AppGui extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-
     }
 
     public void opretKundeAction() {

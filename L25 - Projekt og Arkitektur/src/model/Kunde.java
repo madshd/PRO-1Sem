@@ -6,7 +6,7 @@ public class Kunde {
     private String navn;
     private String mobil;
 
-    private ArrayList<Bestilling> bestillinger = new ArrayList<>();
+    private final ArrayList<Bestilling> bestillinger = new ArrayList<>();
 
     public Kunde(String navn, String mobil) {
         this.navn = navn;
