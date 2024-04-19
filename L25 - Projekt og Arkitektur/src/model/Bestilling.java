@@ -50,10 +50,6 @@ public class Bestilling {
 
     @Override
     public String toString() {
-        return "Bestilling{" +
-                "dato=" + dato +
-                "pladser=" + pladser +
-                forestilling +
-                "} \n";
+        return  forestilling + "\n" + pladser;
     }
 }

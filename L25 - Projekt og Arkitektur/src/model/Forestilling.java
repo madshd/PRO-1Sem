@@ -55,9 +55,9 @@ public class Forestilling {
 
     @Override
     public String toString() {
-        return navn + "(fra " +
-                startDato + " til " +
-                slutDato + ")";
+        return navn + " som spiller fra " +
+                startDato + " - " +
+                slutDato + ".";
     }
 
 }

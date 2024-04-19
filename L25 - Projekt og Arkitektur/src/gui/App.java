@@ -18,7 +18,7 @@ public class App {
         initStorage();
         opretPladser();
         Application.launch(AppGui.class);
-        testPrint();
+//        testPrint();
     }
 
     public static void initStorage() {

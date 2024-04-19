@@ -249,7 +249,6 @@ public class AppGui extends Application {
         ArrayList<Plads> valgtePladser = new ArrayList<>(lvwPlads.getSelectionModel().getSelectedItems());
 
         if (forestilling == null || kunde == null || valgteDato == null || valgtePladser.isEmpty()) {
-            // Error handling if necessary
         } else {
             boolean allePladserLedige = true;
             for (Plads plads : valgtePladser) {
@@ -265,9 +264,15 @@ public class AppGui extends Application {
                 alert.showAndWait();
             } else {
                 Bestilling bestilling = Controller.opretBestillingMedPladser(forestilling, kunde, valgteDato, valgtePladser);
-                Controller.tilføjBestillingTilForestilling(forestilling, bestilling);
                 Controller.tilføjKundeTilBestilling(bestilling, kunde);
-                System.out.println(kunde.hentBestillinger());
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Bestilling godkendt.");
+                alert.setHeaderText(null);
+                alert.setContentText(kunde.toString() + " har nu reserveret " + valgtePladser.size() + " pladser til " + " den "
+                        + valgteDato.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                        + "\nDu har reserveret følgdende pladser til forstillingen\n"
+                        + bestilling.toString());
+                alert.showAndWait();
             }
         }
     }
